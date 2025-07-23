@@ -1,106 +1,245 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTok Live Boss – Assistant IA</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0f0f0f;
-      color: white;
-      padding: 2rem;
-    }
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      color: #f72585;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: #ccc;
-      max-width: 600px;
-      margin: 1rem auto;
-    }
-    .btn {
-      background-color: #7209b7;
-      padding: 1rem 2rem;
-      border: none;
-      color: white;
-      font-size: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 2rem;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .section {
-      max-width: 800px;
-      margin: 4rem auto;
-    }
-    .card {
-      background-color: #1a1a1a;
-      border-radius: 16px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 20px rgba(114, 9, 183, 0.2);
-    }
-    .card h3 {
-      color: #f72585;
-    }
-    .price {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #4cc9f0;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 4rem;
-      color: #888;
-      font-size: 0.9rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Live Assistant - Explosez vos ventes</title>
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-standalone@6.26.0/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="hero">
-    <h1>TikTok Live Boss</h1>
-    <p>L'assistant IA personnel qui t'aide à exploser tes ventes en Live TikTok. Scripts, réponses, promos… tout est prêt.</p>
-    <a class="btn" href="https://wa.me/33600000000?text=Bonjour%20je%20veux%20une%20d%C3%A9mo%20TikTok%20Live%20Boss" target="_blank">📲 Demander une démo WhatsApp</a>
-  </div>
+<body class="bg-gray-50 font-sans">
+    <div id="root"></div>
 
-  <div class="section">
-    <div class="card">
-      <h3>🔥 Starter</h3>
-      <p>1 script live offert pour tester la puissance de l'IA.</p>
-      <p class="price">0 €</p>
-      <a class="btn" href="https://buy.stripe.com/test_StarterTikTok" target="_blank">Obtenir</a>
-    </div>
-    <div class="card">
-      <h3>🚀 Pro</h3>
-      <p>3 scripts personnalisés / semaine + planning de lives</p>
-      <p class="price">49 €/mois</p>
-      <a class="btn" href="https://buy.stripe.com/test_ProTikTok" target="_blank">S'abonner</a>
-    </div>
-    <div class="card">
-      <h3>👑 Boss</h3>
-      <p>Assistant IA personnel, réponses live, relances et accroches optimisées en temps réel.</p>
-      <p class="price">99 €/mois</p>
-      <a class="btn" href="https://buy.stripe.com/test_BossTikTok" target="_blank">Devenir membre Boss</a>
-    </div>
-  </div>
+    <script type="text/babel">
+        function Hero() {
+            return (
+                <header class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white py-16">
+                    <div class="container mx-auto px-4 text-center">
+                        <h1 class="text-5xl font-extrabold mb-4">Dominez TikTok Shop avec l'IA</h1>
+                        <p class="text-xl mb-6">Scripts IA, réponses automatiques, planning optimisé : vendez plus, sans stress.</p>
+                    </div>
+                </header>
+            );
+        }
 
-  <div class="section" style="text-align:center;">
-    <h3>🔗 Accès rapide</h3>
-    <a class="btn" href="https://chat.openai.com/gpts/editor/tonGPTid" target="_blank">Tester l'Assistant IA LiveBoss</a>
-    <a class="btn" href="https://calendly.com/ton_nom/liveboss-demo" target="_blank">📅 Réserver une démo Calendly</a>
-  </div>
+        function FeatureCard({ title, description, icon }) {
+            return (
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <div class="text-indigo-600 text-3xl mb-4">{icon}</div>
+                    <h3 class="text-xl font-semibold text-gray-800">{title}</h3>
+                    <p class="mt-2 text-gray-600">{description}</p>
+                </div>
+            );
+        }
 
-  <div class="footer">
-    &copy; 2025 TikTok Live Boss. Tous droits réservés.
-  </div>
+        function TestimonialCard({ name, role, text }) {
+            return (
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-600 italic">"{text}"</p>
+                    <div class="mt-4">
+                        <p class="font-semibold text-gray-800">{name}</p>
+                        <p class="text-sm text-gray-500">{role}</p>
+                    </div>
+                </div>
+            );
+        }
+
+        function Modal({ isOpen, onClose, onSubmit, plan }) {
+            if (!isOpen) return null;
+            return (
+                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Informations personnelles</h2>
+                        <p class="text-gray-600 mb-4">Veuillez renseigner vos informations pour souscrire au plan {plan}.</p>
+                        <div class="space-y-4">
+                            <input
+                                id="name"
+                                type="text"
+                                placeholder="Nom complet"
+                                class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                                required
+                            />
+                            <input
+                                id="email"
+                                type="email"
+                                placeholder="Adresse e-mail"
+                                class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                                required
+                            />
+                            <input
+                                id="whatsapp"
+                                type="tel"
+                                placeholder="Numéro WhatsApp (ex: +33612345678)"
+                                class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                                required
+                            />
+                            <div class="flex justify-end space-x-4">
+                                <button
+                                    onClick={onClose}
+                                    class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400"
+                                >
+                                    Annuler
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        const name = document.getElementById('name').value;
+                                        const email = document.getElementById('email').value;
+                                        const whatsapp = document.getElementById('whatsapp').value;
+                                        if (name && email && whatsapp) {
+                                            onSubmit({ name, email, whatsapp });
+                                        } else {
+                                            alert('Veuillez remplir tous les champs.');
+                                        }
+                                    }}
+                                    class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                                >
+                                    Confirmer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        function PricingCard({ plan, price, features, buttonText, buttonStyle, stripeLink }) {
+            const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+            const handleSubmit = (formData) => {
+                console.log('Form submitted:', formData);
+                setIsModalOpen(false);
+                window.location.href = stripeLink;
+            };
+
+            return (
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center relative">
+                    {plan === "Boss" && (
+                        <span class="absolute top-0 right-0 bg-yellow-500 text-white text-sm font-semibold px-3 py-1 rounded-bl-lg">
+                            Populaire
+                        </span>
+                    )}
+                    <h3 class="text-2xl font-bold text-gray-800">{plan}</h3>
+                    <p class="text-3xl font-semibold text-indigo-600 mt-4">{price}</p>
+                    <ul class="mt-4 text-gray-600 space-y-2">
+                        {features.map((feature, index) => (
+                            <li key={index}>{feature}</li>
+                        ))}
+                    </ul>
+                    <button
+                        onClick={() => setIsModalOpen(true)}
+                        class={`mt-6 px-6 py-3 rounded-full font-semibold ${buttonStyle}`}
+                    >
+                        {buttonText}
+                    </button>
+                    <Modal
+                        isOpen={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                        onSubmit={handleSubmit}
+                        plan={plan}
+                    />
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <div>
+                    <Hero />
+                    <section class="py-16 bg-gray-100">
+                        <div class="container mx-auto px-4">
+                            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Pourquoi TikTok Live Assistant ?</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <FeatureCard 
+                                    title="Scripts IA percutants" 
+                                    description="Intros, arguments de vente et relances générés par IA pour captiver votre audience." 
+                                    icon="📝"
+                                />
+                                <FeatureCard 
+                                    title="Réponses instantanées" 
+                                    description="L’IA répond aux objections courantes comme 'C’est cher !' ou 'C’est garanti ?' en temps réel." 
+                                    icon="💬"
+                                />
+                                <FeatureCard 
+                                    title="Planning optimisé" 
+                                    description="Un calendrier de lives sur mesure pour maximiser l’engagement et les ventes." 
+                                    icon="📅"
+                                />
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="py-16 bg-white">
+                        <div class="container mx-auto px-4">
+                            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Ce que disent nos utilisateurs</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <TestimonialCard
+                                    name="Sophie Martin"
+                                    role="Vendeuse mode TikTok"
+                                    text="Depuis que j’utilise TikTok Live Assistant, mes ventes ont doublé ! Les scripts sont super naturels et l’IA répond parfaitement aux questions des viewers."
+                                />
+                                <TestimonialCard
+                                    name="Lucas Dubois"
+                                    role="Entrepreneur e-commerce"
+                                    text="Le planning personnalisé m’a aidé à organiser mes lives et à toucher plus de clients. Le plan Boss vaut chaque centime !"
+                                />
+                                <TestimonialCard
+                                    name="Amina K."
+                                    role="Créatrice de bijoux"
+                                    text="L’assistant GPT me donne des idées en temps réel pour mes promos. C’est comme avoir un coach de vente 24/7 !"
+                                />
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="pricing" class="py-16 bg-gray-100">
+                        <div class="container mx-auto px-4">
+                            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Choisissez votre plan</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <PricingCard 
+                                    plan="Starter" 
+                                    price="Gratuit" 
+                                    features={["1 script gratuit", "Accès limité à l’assistant IA"]} 
+                                    buttonText="Essayer gratuitement" 
+                                    buttonStyle="bg-indigo-600 text-white hover:bg-indigo-700" 
+                                    stripeLink="https://buy.stripe.com/00w5kF1ld8241rSd5U9IQ02"
+                                />
+                                <PricingCard 
+                                    plan="Pro" 
+                                    price="49€/mois" 
+                                    features={["3 scripts/semaine", "Planning personnalisé", "Réponses aux objections"]} 
+                                    buttonText="Souscrire" 
+                                    buttonStyle="bg-indigo-600 text-white hover:bg-indigo-700" 
+                                    stripeLink="https://buy.stripe.com/6oUbJ34xpcik8Uk2rg9IQ00"
+                                />
+                                <PricingCard 
+                                    plan="Boss" 
+                                    price="99€/mois" 
+                                    features={["Scripts illimités", "Assistant GPT personnalisé", "Promos automatisées", "Support prioritaire"]} 
+                                    buttonText="Devenir Boss" 
+                                    buttonStyle="bg-yellow-500 text-gray-800 hover:bg-yellow-600" 
+                                    stripeLink="https://buy.stripe.com/28E6oJgg70zC1rS3vk9IQ01"
+                                />
+                            </div>
+                        </div>
+                    </section>
+
+                    <footer class="bg-gray-800 text-white py-8">
+                        <div class="container mx-auto px-4 text-center">
+                            <p>© 2025 TikTok Live Assistant. Tous droits réservés.</p>
+                            <div class="mt-4 space-x-4">
+                                <a href="#" class="hover:text-indigo-400">Contact</a>
+                                <a href="#" class="hover:text-indigo-400">Conditions</a>
+                                <a href="#" class="hover:text-indigo-400">Confidentialité</a>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
 </body>
 </html>
